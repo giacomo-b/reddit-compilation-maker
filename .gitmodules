@@ -1,0 +1,3 @@
+[submodule "bulk-downloader-for-reddit"]
+	path = bulk-downloader-for-reddit
+	url = git@github.com:aliparlakci/bulk-downloader-for-reddit.git
