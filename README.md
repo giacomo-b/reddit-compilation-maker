@@ -1,6 +1,6 @@
 # Reddit Compilation Maker
 
-Reddit Compilation Maker is a Python tool created to make compilations out of user-specified subreddits content.
+Reddit Compilation Maker is a Python tool created to automatically create compilations from subreddits content. Can be used to synthesize the trending videos into compilations, automate content generation for social media, and much more.
 
 ## Requirements
 
@@ -40,7 +40,7 @@ Each `topics` element is a dictionary with the following format:
 
 In the example above, the script will generate a compilation "MyTopic" containing videos from "first-sub" and "second-sub" (add as many as you wish).
 
-The videos will be selected by taking the first `limit` posts of each subreddit, sorted by "top of the last week" in the first case and "hot in the last month" in the second case.
+The videos will be selected by taking the first 10 and 20 posts of each subreddit, sorted by "top of the last week" in the first case and "hot in the last month" in the second case.
 
 Videos longer than `MAX_SUBCLIP_TIME` will be discarded, and a single compilation won't be longer than `MAX_CLIP_TIME`. If the total duration of the videos is longer than `MAX_CLIP_TIME`, multiple compilations are generated.
 
@@ -58,4 +58,4 @@ These options are taken from the original [`bulk-downloader-for-reddit`](https:/
 * `time`: accepts `hour`, `day`, `week`, `month`, `year` and `all`
 
 #### Videos order inside the compilation
-Note that videos are currently being sorted by order inside each compilation video. This suited my use case, but you can change it in `main.py`
+Note that videos are currently being sorted by order inside each compilation video. This suited my use case, but you can change it in `main.py`.
