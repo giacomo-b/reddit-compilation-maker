@@ -35,14 +35,13 @@ for topic in topics:
         # Remove videos that are too long
         duration = [video.duration() for video in videos]
         duration, videos = map(list, zip(*[(d, v) for (d, v) in zip(duration, videos) if d <= topic["MAX_SUBCLIP_TIME"]]))
-
         # Sort videos by duration
         duration, videos = map(list, zip(*sorted(zip(duration, videos), key=itemgetter(0))))
 
-        # Cumulative duration
-        cum_time = np.cumsum(duration)
+        # Cumulative time
+        total_time = np.cumsum(duration)
 
-        compilations = split_into_compilations(cum_time, videos, max_length=topic["MAX_CLIP_TIME"], max_subsets=3)
+        compilations = split_into_compilations(total_time, videos, max_length=topic["MAX_CLIP_TIME"], max_subsets=3)
 
         print("\n\nGenerating YouTube compilations for topic " + topic["name"] + "...\n\n")
 

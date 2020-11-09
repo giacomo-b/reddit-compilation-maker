@@ -60,16 +60,16 @@ def find_valid_mp4_videos(subs, dirname="downloads", additional_valid_streams=Fa
                         videos.append(video)
     return videos
 
-def split_into_compilations(cum_time, videos, max_length, max_subsets=10):
+def split_into_compilations(total_time, videos, max_length, max_subsets=10):
 
     # Limit number of compilations
-    if cum_time[-1] > max_length * max_subsets:
-        stop_ind = np.where(cum_time == cum_time[cum_time <= max_length * max_subsets].max())[0] + 1 # include extra video for flooring later
+    if total_time[-1] > max_length * max_subsets:
+        stop_ind = np.where(total_time == total_time[total_time <= max_length * max_subsets].max())[0] + 1 # include extra video for flooring later
         videos = videos[:int(stop_ind[0] + 1)]
-        cum_time = cum_time[:int(stop_ind[0] + 1)]
+        total_time = total_time[:int(stop_ind[0] + 1)]
 
     # Have at least one compilations
-    n_compilations = max(1, math.floor(cum_time[-1] / max_length))
+    n_compilations = max(1, math.floor(total_time[-1] / max_length))
 
     # Split videos evenly across compilations
     compilations = [[] for n in range(n_compilations)]
