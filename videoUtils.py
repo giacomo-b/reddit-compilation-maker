@@ -47,8 +47,11 @@ def find_valid_mp4_videos(subs, dirname="downloads", additional_valid_streams=Fa
         for filename in os.listdir(os.path.join(dirname, sub["name"])):
             if filename.endswith(".mp4"):
                 path = os.path.join(dirname, sub["name"], filename)
-                video = Video(filename, path)
-                videos.append(video)
+                try:
+                    video = Video(filename, path)
+                    videos.append(video)
+                except:
+                    print("Could not find the video at the path:" + path)
             elif additional_valid_streams and filename.endswith("video"):
                 # reddit-bulk-downloader sometimes returns videos
                 # with no extensions, whose name end with "video"
